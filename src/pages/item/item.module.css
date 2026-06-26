@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+*:not(footer) > .main {
+  justify-content: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 40% 25%;
+  gap: 30px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 5% 0 5% 0 ;
+  box-sizing: border-box;
+}
+
+.about_the_subject,
+.specifications {
+  min-width: 0; 
+  overflow-wrap: break-word; 
+}
+
+.about_the_subject {
+  display: grid;
+  grid-template-areas:
+    "name"
+    "rank_img"
+    "title";
+  grid-column: 1;
+  gap: 30px;
+  padding: 15px;
+  height: auto;
+  background-color: rgba(7, 6, 6, 0.9);
+  border: 0.6px solid rgba(109, 109, 103, 0.3);
+  border-radius: 7px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: name;
+}
+
+.rank_img {
+  display: flex;
+  justify-content: space-between;
+  grid-area: rank_img;
+}
+
+.rank {
+  width: 30%;
+  font-size: 0.86em;
+}
+
+.rank span {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+}
+
+.rank p > span {
+  margin-left: 5%;
+}
+
+.title {
+  grid-area: title;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  all: unset;
+  padding: 5px 10px;
+  height: 45%;
+  background-color: rgba(36, 32, 32, 0.5);
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 0.85em;
+  font-weight: 300;
+  line-height: 1.6;
+  border-top: 0.67px solid rgba(109, 109, 103, 0.3);
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  list-style: none;
+  padding: 0 20px 17px 20px;
+  background-color: rgba(7, 6, 6, 0.9);
+  border: 0.6px solid rgba(109, 109, 103, 0.3);
+  border-radius: 7px;
+}
+
+.specifications p {
+  display: flex;
+  justify-content: space-between;
+  gap: 7px;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95em;
+  font-weight: 450;
+  color: #838383;
+}
+
+.specifications span {
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+}
+
+.damage_multipliers {
+  margin-top: 2.5%;
+  padding-top: 2.5%;
+  color: #a2a0a0;
+  border-top: 0.67px solid rgba(109, 109, 103, 0.3);
+}
+
+.damage_multipliers li > p {
+  color: #a2a0a0;
+}
+
+.damage_multipliers > p {
+  font-weight: 750;
+  color: #a2a0a0;
+}

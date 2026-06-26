@@ -1,0 +1,72 @@
+.items_ {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin: 50px;
+  gap: 25px;
+  width: 75%;
+  height: 600px;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(7,6,6,0.9);
+  border-radius: 5px;
+}
+
+.items_::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.items_::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.items_::-webkit-scrollbar-thumb {
+  background: rgba(109, 109, 103, 0.6);
+  border-radius: 4px;
+}
+
+.items_::-webkit-scrollbar-thumb:hover {
+  background: rgba(109, 109, 103, 1);
+}
+
+.item_card {
+    display: grid;
+    grid-template-areas: 
+    "img name"
+    "img title";
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    width: 30%;
+    height: 55px;
+    border: 0.6px solid rgba(109, 109, 103, 0.3);
+    border-radius: 7px;
+}
+
+.item_card img {
+
+    grid-area: img;
+    width: 50px;
+    height: 50px;
+}
+
+.item_card h3 {
+    grid-area: name;
+    margin-left: 30px;
+    font-size: 1em;
+}
+
+.item_card p {
+    grid-area: title;
+    font-size: 0.86em;
+    color: #808080;
+}
+
+.item_card h3, .item_card p {
+    margin: 0;           
+}
