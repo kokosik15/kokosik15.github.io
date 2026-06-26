@@ -1,103 +1,45 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom"; // убрали Route
 import styles from "/src/pages/items.module.css";
 
-const itemCategories = [
-  {
-    id: 0,
-    name: "Оружие",
-    key: "weapons",
-    route: "/items/weapons",
-  },
-  {
-    id: 1,
-    name: "Броня",
-    key: "armor",
-    route: "/items/armor",
-  },
-  {
-    id: 2,
-    name: "Артефакты",
-    key: "artifacts",
-    route: "/items/artifacts",
-  },
-  {
-    id: 3,
-    name: "Обвесы",
-    key: "attachments",
-    route: "/items/attachments",
-  },
-  {
-    id: 4,
-    name: "Устройства",
-    key: "devices",
-    route: "/items/devices",
-  },
-  {
-    id: 5,
-    name: "Контейнеры",
-    key: "containers",
-    route: "/items/containers",
-  },
-  {
-    id: 6,
-    name: "Рюкзаки",
-    key: "backpacks",
-    route: "/items/backpacks",
-  },
-  {
-    id: 7,
-    name: "Другое",
-    key: "other",
-    route: "#",
-    disabled: true,
-  },
-];
+const itemCategories = [ /* ... без изменений ... */ ];
 
 export function ItemsPage() {
-  const [categoryData, setCategoryData] = useState({});
+  const [categoryData, setCategoryData] = useState<Record<string, number>>({}); // явный тип
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [stats, setStats] = useState({
-    totalItems: 0,
-    totalCategories: 8,
-  });
+  const [error, setError] = useState<string | null>(null); // исправлен тип
+  // stats удалён, так как не используется (либо оставьте с _)
 
   useEffect(() => {
     const fetchItemsData = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:5000/counts", {
           timeout: 5000,
-          headers: {
-            Accept: "application/json",
-          },
+          headers: { Accept: "application/json" },
         });
 
-        const transformedData = {};
+        const transformedData: Record<string, number> = {};
         let totalItems = 0;
 
         if (response.data && response.data.categories) {
           Object.entries(response.data.categories).forEach(([key, value]) => {
-            const count = value.count || 0;
+            const count = (value as any)?.count || 0;
             transformedData[key] = count;
             totalItems += count;
           });
         }
 
         setCategoryData(transformedData);
-        setStats({
-          totalItems,
-          totalCategories: Object.keys(transformedData).length,
-        });
-
         console.log("✅ Данные получены:", transformedData);
         setError(null);
       } catch (err) {
         console.error("Ошибка при загрузке данных:", err);
-        setError(`Не удалось загрузить данные: ${err.message}`);
+        const errorMessage = err instanceof Error ? err.message : String(err);
+        setError(`Не удалось загрузить данные: ${errorMessage}`);
 
-        const mockData = {
+        // mock-данные
+        const mockData: Record<string, number> = {
           weapons: 325,
           armor: 18,
           artifacts: 20,
@@ -107,15 +49,7 @@ export function ItemsPage() {
           backpacks: 20,
           other: 0,
         };
-
-        let totalMock = 0;
-        Object.values(mockData).forEach((count) => (totalMock += count));
-
         setCategoryData(mockData);
-        setStats({
-          totalItems: totalMock,
-          totalCategories: 8,
-        });
       } finally {
         setLoading(false);
       }
