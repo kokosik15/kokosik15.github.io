@@ -38,7 +38,7 @@ export function ContainersPage() {
       try {
         setLoading(true);
         const response = await axios.get<ApiResponse>(
-          `http://127.0.0.1:5000/items/${category}`,
+          `https://stalcraft-wiki-api-github-io.onrender.com/items/${category}`,
         );
         setItems(response.data.items);
         setError(null);
