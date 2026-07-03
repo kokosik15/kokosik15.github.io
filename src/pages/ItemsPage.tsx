@@ -14,7 +14,7 @@ export function ItemsPage() {
   useEffect(() => {
     const fetchItemsData = async () => {
       try {
-        const response = await axios.get("https://stalcraft-wiki-api-github-io.onrender.com", {
+        const response = await axios.get("https://stalcraft-wiki-api-github-io.onrender.com/counts", {
           timeout: 5000,
           headers: { Accept: "application/json" },
         });
