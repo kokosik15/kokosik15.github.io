@@ -79,7 +79,7 @@ export function ItemPage() {
       if (!category || !item_name) return;
       try {
         setLoading(true);
-        const url = `http://127.0.0.1:5000/item/${category}/${encodeURIComponent(item_name)}/raw`;
+        const url = `https://stalcraft-wiki-api-github-io.onrender.com/item/${category}/${encodeURIComponent(item_name)}/raw`;
         const response = await axios.get<ItemRawData>(url);
         setItemData(response.data);
         setError(null);
