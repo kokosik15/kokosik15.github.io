@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // убрали Route
+import { Link } from "react-router-dom"; // убрал Route
 import styles from "/src/pages/items.module.css";
 
 const itemCategories = [ /* ... без изменений ... */ ];
